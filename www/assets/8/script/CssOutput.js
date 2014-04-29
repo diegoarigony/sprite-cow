@@ -38,7 +38,7 @@ spriteCow.CssOutput = (function() {
 	var CssOutputProto = CssOutput.prototype;
 	
 	CssOutputProto.update = function() {
-		var indent = this.useTabs ? '\t' : '    ';
+		var indent = ' ';
 		var rect = this.rect;
 		var $code = this._$code;
 		var widthMultiplier = this.bgSize ? this.scaledWidth / this.imgWidth : 1;
@@ -47,7 +47,7 @@ spriteCow.CssOutput = (function() {
 		
 		$code.empty()
 			.append( $('<span class="selector"/>').text(this.selector) )
-			.append(' {\n');
+			.append(' {');
 		
 		if (this.useBgUrl && this.backgroundFileName) {
 			$code.append( indent + "background: url('" );
@@ -64,13 +64,13 @@ spriteCow.CssOutput = (function() {
 		if (this.percentPos) {
 			$code.append(
 				bgPercentVal( rect.x / -(rect.width - this.imgWidth) ) + ' ' +
-				bgPercentVal( rect.y / -(rect.height - this.imgHeight) ) + ';\n'
+				bgPercentVal( rect.y / -(rect.height - this.imgHeight) ) + ';'
 			);
 		}
 		else {
 			$code.append(
 				pxVal(-rect.x * widthMultiplier) + ' ' +
-				pxVal(-rect.y * heightMultiplier) + ';\n'
+				pxVal(-rect.y * heightMultiplier) + ';'
 			);
 		}
 
@@ -78,14 +78,14 @@ spriteCow.CssOutput = (function() {
 			$code.append(
 				indent + 'background-size: ' +
 				pxVal(this.scaledWidth) + ' ' +
-				pxVal(this.scaledHeight) + ';\n'
+				pxVal(this.scaledHeight) + ';'
 			);
 		}
 		
 		$code.append(
-			indent + 'width: ' + pxVal(rect.width * widthMultiplier) + ';\n' +
-			indent + 'height: ' + pxVal(rect.height * heightMultiplier) + ';\n' +
-			'}'
+			indent + 'height: ' + pxVal(rect.height * heightMultiplier) + ';' +
+			indent + 'width: ' + pxVal(rect.width * widthMultiplier) + ';' +
+			' }'
 		);
 	};
 	
