@@ -49,17 +49,7 @@ spriteCow.CssOutput = (function() {
 			.append( $('<span class="selector"/>').text(this.selector) )
 			.append(' {');
 		
-		if (this.useBgUrl && this.backgroundFileName) {
-			$code.append( indent + "background: url('" );
-			$file = $('<span class="file"/>')
-				.append( $('<span data-inline-edit="file-path"/>').text( this.path ) )
-				.append( $('<span class="file-name"/>').text( this.backgroundFileName ) );
-			
-			$code.append( $file ).append( "') no-repeat " );
-		}
-		else {
-			$code.append( indent + "background-position: " );
-		}
+		$code.append( indent + "background-position:" );
 
 		if (this.percentPos) {
 			$code.append(
@@ -83,8 +73,8 @@ spriteCow.CssOutput = (function() {
 		}
 		
 		$code.append(
-			indent + 'height: ' + pxVal(rect.height * heightMultiplier) + ';' +
-			indent + 'width: ' + pxVal(rect.width * widthMultiplier) + ';' +
+			indent + 'height:' + pxVal(rect.height * heightMultiplier) + ';' +
+			indent + 'width:' + pxVal(rect.width * widthMultiplier) + ';' +
 			' }'
 		);
 	};
